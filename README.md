@@ -69,22 +69,20 @@ Topics:
 - Database hosting
 - Cloud hosting
 - Microservers
-### Different servers for different jobs
-1. Front end server
-2. Database server
-3. Authentication server
-4. Micro services
-5. Integration server
+  - Different servers for different jobs
+  1. Front end server
+  2. Database server
+  3. Authentication server
+  4. Micro services
+  5. Integration server
 - Web servers(nginx) and simple servers(express)
 - Google, AWS, Heroku, Azure, etc
 - Containerization
 - Automated test
 - Automated deployment
-### Automatic Deployment
-Whenever you push to a specific Git branch, your integration server receives a Git Hook, requesting that the repository be built, tested, and deployed.
+  Whenever you push to a specific Git branch, your integration server receives a Git Hook, requesting that the repository be built, tested, and deployed.
 - Versioning
-### Version control
-Every piece of software is running a specific version. Version numbers actually reference a specific container configuration and a specific git commit version.
+  Every piece of software is running a specific version. Version numbers actually reference a specific container configuration and a specific git commit version.
 - Manual Testing
 - Security in motion (HTTPS)
 - Security at rest (ssh, pub/priv key encryption, MFA, password danger, etc)
