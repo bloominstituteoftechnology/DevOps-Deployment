@@ -90,6 +90,7 @@ Every piece of software is running a specific version. Version numbers actually 
 - Security at rest (ssh, pub/priv key encryption, MFA, password danger, etc)
 
 # Assignment:
+The following assignment is extremely difficult. Do not lose heart if you are lost or struggling. In professional work I would allow between 1-3 weeks of 8 hour days of development to accomplish the following goals.
 
 Let's build a CI pipeline:
 
