@@ -93,10 +93,10 @@ The following assignment is extremely difficult. Do not lose heart if you are lo
 Let's build a CI pipeline:
 
 You need:
-A front end in a repository
-Unit tests for your front end
-A back end in a repository
-Integration tests for your back end
+- A front end in a repository
+- Unit tests for your front end
+- A back end in a repository
+- Integration tests for your back end
 
 You will:
 Follow instructions at GCP for creating a Docker container for your repository
@@ -105,6 +105,7 @@ Google Cloud Platform to host a back end:
 [Quick GCP setup](https://codelabs.developers.google.com/codelabs/cloud-slack-bot/index.html#0)
 
 Your back end will be an express server with two endpoints:
+
     /version - returns the current software version
     /time - returns the current time
 
