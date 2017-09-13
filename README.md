@@ -15,7 +15,7 @@ DevOps is the complicated framework that surrounds transmitting your code from y
 5. Configuring the above software to become failure tolerant (automatically restart).
 6. Configuring the above software to be data-consistent.
 
-The above steps are sufficient to take your local software development project to the public. You can trivially hire a service to perform the first 3 steps, leaving you only with the remaining 3. You can ignore steps 5 and 6, leaving them up to the software configured in 2, and you can create static websites that aren't subject to the issues in steps 5 and 6. Geocities, Wordpress, Small Victories, and many other sites allow you to implement only step #4. If you wish to be a professional web developer, you will need to learn the rest of the steps.
+The above steps are sufficient to take your local software development project to the public. You can trivially hire a service to perform the first 3 steps, leaving you only with the remaining 3. You can ignore steps 5 and 6, leaving them up to the software configured in 2, and you can create static websites that aren't subject to the issues in steps 5 and 6. Geocities, [Wordpress](https://www.wordpress.com), [Small Victories](https://www.smallvictori.es/), and many other sites allow you to implement only step #4. If you wish to be a professional web developer, you will need to learn the rest of the steps.
 
 Finally, the above steps only create a relatively brittle site. In particular, these steps don't help at all with the development process - that is, the process of writing and refining your application code to become reliable, feature-rich, and bug free. These steps in particular do not scale well for projects that are not toys: most development projects involve many developers, technologies being developed in parallel, and thousands or millions of expectant customers waiting for each revision. In order to safely and effectively deliver code to the world at large, more development is needed.
 
@@ -75,6 +75,8 @@ Topics:
 - Automated test
 - Automated deployment
 - Versioning
+- Security in motion (HTTPS)
+- Security at rest (ssh, pub/priv key encryption, MFA, password danger, etc)
 
 Assignment:
 
