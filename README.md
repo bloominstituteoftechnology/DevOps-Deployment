@@ -56,27 +56,7 @@ The rest of this document
 8. Hosting servers in different physical locations in order to improve performance and fault tolerance
 9. Splitting up data in different locations to improve performance and fault tolerance
 
-### Different servers for different jobs
-
-1. Front end server
-2. Database server
-3. Authentication server
-4. Micro services
-5. Integration server
-
-### Version control
-
-Every piece of software is running a specific version. Version numbers actually reference a specific container configuration and a specific git commit version.
-
-### Automatic Deployment
-
-Whenever you push to a specific Git branch, your integration server receives a Git Hook, requesting that the repository be built, tested, and deployed.
-
-### Quality Assurance
-
 # Sprint:
-
-Devops Lecture:
 
 Topics:
 
@@ -89,16 +69,27 @@ Topics:
 - Database hosting
 - Cloud hosting
 - Microservers
+### Different servers for different jobs
+1. Front end server
+2. Database server
+3. Authentication server
+4. Micro services
+5. Integration server
 - Web servers(nginx) and simple servers(express)
 - Google, AWS, Heroku, Azure, etc
 - Containerization
 - Automated test
 - Automated deployment
+### Automatic Deployment
+Whenever you push to a specific Git branch, your integration server receives a Git Hook, requesting that the repository be built, tested, and deployed.
 - Versioning
+### Version control
+Every piece of software is running a specific version. Version numbers actually reference a specific container configuration and a specific git commit version.
+- Manual Testing
 - Security in motion (HTTPS)
 - Security at rest (ssh, pub/priv key encryption, MFA, password danger, etc)
 
-Assignment:
+# Assignment:
 
 Let's build a CI pipeline:
 
@@ -110,13 +101,42 @@ Integration tests for your back end
 
 You will:
 Follow instructions at GCP for creating a Docker container for your repository
-Test your docker container with the command line:
+
+Google Cloud Platform to host a back end:
+[Quick GCP setup](https://codelabs.developers.google.com/codelabs/cloud-slack-bot/index.html#0)
+
+Your back end will be an express server with two endpoints:
+    /version - returns the current software version
+    /time - returns the current time
+
+Then, test your docker container with the command line:
 - Is it running? (curl localhost:port)
 - Can you stop it (docker command)
 - Can you start it again? (docker command)
-Create a branch of your back end called `qa`
-Deploy your `qa` 
 
+Google Cloud platform to host a front end:
+[Quick GCP setup](https://codelabs.developers.google.com/codelabs/cloud-slack-bot/index.html#0)
+
+[Set up Jenkins on Container Engine](https://cloud.google.com/solutions/jenkins-on-container-engine-tutorial#top_of_page)
+
+[Jenkins on GCP, long](https://cloud.google.com/solutions/continuous-delivery-jenkins-container-engine)
+
+Your front end will be a React app that displays its own version, the back end's version, and the time from the back end.
+
+    brew install docker
+    do (https://cloud.google.com/sdk/docs/#mac)
+    ./google-cloud-sdk/install.sh
+    gcloud init
+    gcloud config list
+    gcloud components install kubectl
+    create project at (https://console.cloud.google.com)
+    after created, check Container Engine, Container clusters, Container Registry
+    gcloud config set project lambda-XXXXXX
+    gcloud container clusters create lambda-cluster
+    gcloud config set container/cluster lambda-cluster
+    gcloud container clusters get-credentials lambda-cluster --zone us-central1-a --project lambda-XXXXXX
+    kubectl proxy
+    http://localhost:8001/ui
 
 
 
