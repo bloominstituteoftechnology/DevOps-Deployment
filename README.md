@@ -109,6 +109,8 @@ Your back end will be an express server with two endpoints:
     /version - returns the current software version
     /time - returns the current time
 
+Ignore everything about the slack bot, except that kittenbot.js will actually be an express server. Do not try to create a slack bot or get its access token. We're using this tutorial because it builds a GCP container very quickly.
+
 Then, test your docker container with the command line:
 - Is it running? (curl localhost:port)
 - Can you stop it (docker command)
@@ -117,12 +119,15 @@ Then, test your docker container with the command line:
 Google Cloud platform to host a front end:
 [Quick GCP setup](https://codelabs.developers.google.com/codelabs/cloud-slack-bot/index.html#0)
 
+This is the same tutorial as for the back end. Ignore the stuff about the slack bot. Instead, you will check out this repository to the docker container.
+
 [Set up Jenkins on Container Engine](https://cloud.google.com/solutions/jenkins-on-container-engine-tutorial#top_of_page)
 
 [Jenkins on GCP, long](https://cloud.google.com/solutions/continuous-delivery-jenkins-container-engine)
 
 Your front end will be a React app that displays its own version, the back end's version, and the time from the back end.
 
+    // Reference commands, you will find them in the above tutorials.
     brew install docker
     do (https://cloud.google.com/sdk/docs/#mac)
     ./google-cloud-sdk/install.sh
