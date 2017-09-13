@@ -18,24 +18,26 @@ The above steps are sufficient to take your local software development project t
 
 Finally, the above steps only create a relatively brittle site. In particular, these steps don't help at all with the development process - that is, the process of writing and refining your application code to become reliable, feature-rich, and bug free. These steps in particular do not scale well for projects that are not toys: most development projects involve many developers, technologies being developed in parallel, and thousands or millions of expectant customers waiting for each revision. In order to safely and effectively deliver code to the world at large, more development is needed.
 
-Domain names - ICANN and Namecheap, WHOIS, A records
-Security - HTTPS and Digicert
-Scalability - Dedicated hosts versus your own hosts
-
 ## Mini Sprint:
 
 The above notes about DevOps.
 
-### Providers:
-- Geocities
-- Godaddy
-- Small victories
+- Domain names - ICANN and Namecheap, WHOIS, A records
+- Security - HTTPS and Digicert, self signed HTTPS
+- Scalability - Dedicated hosts versus your own hosts
 
+### Basic Hosting:
+
+- Name servers and virtual hosts via CPanel and SSH (Godaddy, Geocities)
+- Super lightweight hosts like Small victories
+
+### Local Hosting:
 
 Now, get [ngrok](https://ngrok.com/) and start using it with the free account. Choose a personal or Lambda web site project that you'd like to share with the rest of class (and the world), run it on your local machine, and share it with us using `ngrok`.
 
+### Advanced Hosting:
 
-
+The rest of this document
 
 ## Continuous Deployment
     
