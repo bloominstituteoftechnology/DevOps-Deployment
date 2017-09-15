@@ -10,3 +10,29 @@ gcloud container clusters create lambda-devops-cluster \
       --num-nodes=2 \
       --zone=us-central1-f \
       --machine-type n1-standard-1
+
+kubectl create -f lambda-devops-deployment.yaml --record
+
+kubectl get pods lambda-devops-3796695231-pl956 --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{"\n"}}'
+
+kubectl expose deployment lambda-devops --type="LoadBalancer" --port=8080 --target-port=8080
+
+lambda-devops.yaml:
+  apiVersion: extensions/v1beta1 
+  kind: Deployment 
+  metadata:
+    name: slack-codelab
+  spec:
+    replicas: 1
+    strategy:
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          app: slack-codelab
+      spec:
+        containers:
+        - name: master
+          image: gcr.io/PROJECT_ID/slack-codelab:v1
+          port: 8080
+

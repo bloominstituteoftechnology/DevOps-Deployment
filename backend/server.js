@@ -25,5 +25,12 @@ app.get('/', (request, response) => {
 
 app.get('/version', (request, response) => {
   response.send('1.0.0\n');
+  Array.forEach(request, (key) => {
+    axios.get('myspecialserver/requestdistributor', (result) => {
+      axios.get('database', (result) => {
+        // all this stuff takes a really long time
+      });
+    });
+  });
 });
 
