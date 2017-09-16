@@ -1,0 +1,107 @@
+# Install gcloud to your local machine
+# windows, mac, linux <- instructions for each of these platforms
+# easier: https://console.cloud.google.com
+
+# Create GCP Account
+# Google Container Engine -> Enable
+# [Click me](https://www.dropbox.com/s/c36ao6winvzhwy8/Screenshot%202017-09-15%2017.04.18.png?raw=0)
+# Google Compute Engine API -> Enable
+
+export PROJECT_ID="$HOSTNAME-lambda-frontend-deploy"
+
+# Create project named PROJECT_ID
+
+# Copy your id_rsa from local ~/.ssh to GCP ~/.ssh (unless you installed gcloud locally)
+
+git clone git@github.com:LambdaSchool/DevOps-Deployment.git
+
+cd DevOps-Deployment/frontend
+
+# Create Dockerfile
+FROM node:5.4
+COPY package.json package.json
+WORKDIR /
+RUN npm install
+COPY webpack.config.js .
+COPY src/* /src
+EXPOSE 8080
+CMD ["npm", "start"]
+
+#echo 'FROM node:5.4
+#COPY package.json package.json
+#WORKDIR /src
+#RUN npm install
+#COPY src/* /src
+#EXPOSE 8080
+#CMD ["npm", "start"]' > Dockerfile
+
+# If you have trouble with Dockerfile (you probably will), see:
+https://medium.com/@andyccs/webpack-and-docker-for-development-and-deployment-ae0e73243db4
+
+docker build -t gcr.io/${PROJECT_ID}/lambda-frontend-deploy:v1 .
+
+# If your Dockerfile is perfect, this works.
+# Otherwise it fails without saying anything at all.
+
+docker run -d -p 8080:8080 gcr.io/${PROJECT_ID}/lambda-frontend-deploy:v1
+
+# Now you can test it
+curl localhost:8080
+# This should respond with "Hello World!"
+
+gcloud docker -- push gcr.io/${PROJECT_ID}/lambda-frontend-deploy:v1
+
+gcloud container clusters create ${PROJECT_ID}-devops-cluster \
+      --num-nodes=1 \
+      --zone=us-central1-f \
+      --machine-type n1-standard-1 \
+      --project=${PROJECT_ID}
+
+# Create the following yaml file lambda-frontend-deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ${PROJECT_ID} # !!!!!!! you have to manually enter this !!!!!!!
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ${PROJECT_ID} # !!!!!!! same here
+    spec:
+      containers:
+      - name: master
+        image: gcr.io/${PROJECT_ID}/lambda-frontend-deploy:v1  # !!!!!!! same
+        ports:
+          - containerPort: 8080
+
+# Easily create the above file:
+#echo '{the stuff above}
+#     {end of stuff} > lambda-frontend-deployment.yaml
+
+# vim find-replace your PROJECT_ID: CMD-C:%s/${PROJECT_ID}/<YOUR ACTUAL ONE>/g
+
+kubectl create -f lambda-frontend-deployment.yaml --record
+
+# Get the name of the container you just created
+kubectl get pods
+
+# IF you get an STATUS=InvalidImageName you must EDIT your deployment .yaml file with the below
+kubectl edit deployments/lambda-frontend-deploy
+# OR your gcr.io repository for this project, found [here](https://www.dropbox.com/s/5u9iyrept25s03w/Screen%20Shot%202017-09-15%20at%206.48.27%20PM.png?raw=1)
+
+kubectl expose deployment lambda-frontend-deploy --type=LoadBalancer --port=8080 --target-port=80
+
+# Get your IP!
+
+kubectl get services
+
+# Once you have the IP for your front end, you can assign a domain name to it via its CNAME A Record, then you'll be online.
+#
+
+Buy a domain name!
+
+
+
