@@ -70,12 +70,12 @@ kubectl create -f lambda-devops-deployment.yaml --record
 # Get the name of the container you just created
 kubectl get pods
 
-# If you get an STATUS=InvalidImageName you must EDIT your deployment .yaml file with
-kubectl edit deployments/lambda-devops
-
 kubectl expose deployment lambda-devops --type=LoadBalancer --port=8080 --target-port=8080
 
-# Get your IP!
+kubectl port-forward lambda-devops 8080:8080
 
-kubectl get services
+# Get the EXTERNAL-IP with
+# 
+
+
 
