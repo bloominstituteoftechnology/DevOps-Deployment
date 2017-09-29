@@ -103,6 +103,7 @@ Follow instructions at GCP for creating a Docker container for your repository
 
 Google Cloud Platform to host a back end:
 [Quick GCP setup](https://codelabs.developers.google.com/codelabs/cloud-slack-bot/index.html#0)
+NOTE: When going through this GCP tutorial, it will ask you to enable billing, meaning you'll need to give Google your credit card info. The tutorial also says that this tutorial will cost you a few dollars. However, new GCP users are eligible for [$300 in credit](https://console.developers.google.com/billing/freetrial?hl=en), which you should take advantage of. 
 
 Your back end will be an express server with two endpoints:
 
