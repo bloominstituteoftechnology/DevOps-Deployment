@@ -165,7 +165,7 @@ $ kubectl expose deployment [NAME OF YOUR DEPLOYMENT] --type="LoadBalancer"
 This will instantiate a Kubernetes service that handles a Google Cloud load balancer to manage traffic to your deployed 
 containers. 
 
-Now, run `kubectl get services` to get the public IP address of your service. With that, you can visit `http://[PUBLIC IP]:[PORT] 
+Now, run `kubectl get services` to get the public IP address of your service. With that, you can visit `http://[PUBLIC IP]:[PORT]` 
 in order to access your newly-deployed service! From here, you would purchase a domain name from a domain supplier to point to 
 this IP and port number. 
 
