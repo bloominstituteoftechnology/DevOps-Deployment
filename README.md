@@ -49,7 +49,7 @@ that will hopefully help.
 Once you've determined that the `gcloud` command is accessible from your command line, type `gcloud init` and follow the instructions 
 to configure your gcloud environment. Once that completes, type in 
 ```
-gcloud components install kubectl
+$ gcloud components install kubectl
 ```
 to install the Kubernetes command line interface for running commands against Kubernetes clusters.
 
@@ -59,7 +59,7 @@ Name it something where you will be able to differentiate between the backend re
 will need to create separate projects for them via the GCP web UI console. Once you've created the project and taken note of 
 the project ID, you'll want to export the project ID to an environment variable so that it will be aliased for you by typing  
 ```
-export PROJECT_ID="YOUR_PROJECT_ID"    # The double quotes are necessary in this case
+$ export PROJECT_ID="YOUR_PROJECT_ID"    # The double quotes are necessary in this case
 ```
 
 ## Building and Running a Docker Image
@@ -93,11 +93,11 @@ Now you can `curl localhost:8080` to ensure that the backend container is up and
 ## Initializing a Kubernetes Cluster
 In order to initialize a brand new Kubernetes cluster, run 
 ```
-gcloud container clusters create [CLUSTER NAME HERE] \
-    --num-nodes=2 \
-    --zone=[ZONE YOU'RE LOCATED IN] \
-    --machine-type n1-standard-1 \
-    --project=${PROJECT_ID}
+$ gcloud container clusters create [CLUSTER NAME HERE] \
+      --num-nodes=2 \
+      --zone=[ZONE YOU'RE LOCATED IN] \
+      --machine-type n1-standard-1 \
+      --project=${PROJECT_ID}
 ```
 
 The list of GCP regions and zones can be found [here](https://cloud.google.com/compute/docs/regions-zones/). Pick the zone that is 
@@ -105,7 +105,7 @@ geographically closest to you.
 
 Now you'll need to connect your `kubectl` client to your cluster by running
 ``` 
-gcloud container clusters get-credentials [CLUSTER NAME HERE] --zone=[YOUR ZONE HERE]
+$ gcloud container clusters get-credentials [CLUSTER NAME HERE] --zone=[YOUR ZONE HERE]
 ```
 So now we have a docker image and a cluster. We want to deploy that image to our cluster and start the containers so that 
 requests to them can be served. 
