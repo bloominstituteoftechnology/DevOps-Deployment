@@ -6,9 +6,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts": {
+      "start": "node server.js"
+  },
   "dependencies": {
     "express": "*",
     "request": "*",
-    "request-promise": "*" 
+    "request-promise": "*"
   }
 }
