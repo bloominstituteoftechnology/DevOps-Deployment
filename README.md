@@ -113,7 +113,7 @@ requests to them can be served.
 ## Upload Docker Image to Google Container Registry
 We need to push our built Docker image to the container registry now with
 ```
-$ gcloud docker -- push grc.io/${PROJECT_ID}/lambda-backend-devops:v1
+$ gcloud docker -- push gcr.io/${PROJECT_ID}/lambda-backend-devops:v1
 ```
 If you receive a message saying that your access to the Google Container Registry API was denied, visit the URL that the error 
 message displays in order to enable API access, then re-run the command again. 
