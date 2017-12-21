@@ -7,6 +7,7 @@
 # Google Compute Engine API -> Enable
 
 export PROJECT_ID="$HOSTNAME-lambda-devops"
+(set instead of export in windows)
 
 # Create project named PROJECT_ID
 
