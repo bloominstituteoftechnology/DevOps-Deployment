@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: backendgenius # You'll need to manually type this out. The environment variable won't work
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: backendgenius
+    spec:     # pod spec                  
+      containers: 
+      - name: backendgenius 
+        image: gcr.io/backendgenius/lambda-backend-devops:v1  # image we pushed
+        ports:
+        - containerPort: 8080
