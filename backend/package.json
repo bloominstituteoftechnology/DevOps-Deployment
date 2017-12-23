@@ -7,9 +7,10 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-      "start": "node server.js"
+    "start": "node server.js"
   },
   "dependencies": {
+    "docker": "^1.0.0",
     "express": "*",
     "request": "*",
     "request-promise": "*"
